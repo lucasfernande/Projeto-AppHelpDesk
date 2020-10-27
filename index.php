@@ -33,6 +33,7 @@
               Login
             </div>
             <div class="card-body">
+
               <form action="valida_login.php" method="post">
                 <div class="form-group">
                   <input name="email" type="email" class="form-control" placeholder="E-mail">
@@ -40,8 +41,16 @@
                 <div class="form-group">
                   <input name="senha" type="password" class="form-control" placeholder="Senha">
                 </div>
+
+                <? if(isset($_GET['login']) and $_GET['login'] == 'error') { ?>
+                      <div class="d-flex text-danger justify-content-center">
+                          Usuário ou senha inválidos
+                      </div>
+                <? } ?>
+
                 <button class="btn btn-lg btn-info btn-block" type="submit">Entrar</button>
               </form>
+
             </div>
           </div>
         </div>
