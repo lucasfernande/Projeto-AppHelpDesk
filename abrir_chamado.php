@@ -51,7 +51,7 @@
                     <div class="form-group">
                       <label>Categoria</label>
                       <select name="categoria" class="form-control">
-                        <option>Criação Usuário</option>
+                        <option>-</option>
                         <option>Impressora</option>
                         <option>Hardware</option>
                         <option>Software</option>

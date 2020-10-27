@@ -1,5 +1,21 @@
 <? require_once "valida_acesso.php"; ?>
 
+<?php 
+    
+    # array dos chamados
+    $chamados = array();
+
+    $arquivo = fopen('chamados.txt', 'r'); # r = somente leitura
+
+    while (!feof($arquivo)) { # a função feof() retorna true apenas quando encontra o fim do arquivo, por isso o operador de negação (!)
+      $registro = fgets($arquivo);
+      $chamados[] = $registro;
+    }
+
+    fclose($arquivo);
+
+?>
+
 <html>
   <head>
     <meta charset="utf-8" />
@@ -41,30 +57,32 @@
             
             <div class="card-body">
               
+              <? foreach ($chamados as $chamado) { ?>
+
+              <?php
+                  $chamadoDados = explode('#', $chamado);
+
+                  if (count($chamadoDados) < 3) { # < 3 pois é a quantidade de campos preenchidos (título, categoria e descrição) evitando mostrar chamados vazios
+                    continue;
+                  }
+              ?>  
               <div class="card mb-3 bg-light">
                 <div class="card-body">
-                  <h5 class="card-title">Título do chamado...</h5>
-                  <h6 class="card-subtitle mb-2 text-muted">Categoria</h6>
-                  <p class="card-text">Descrição do chamado...</p>
-
+                  <h5 class="card-title"><?= $chamadoDados[0] ?></h5>
+                  <h6 class="card-subtitle mb-2 text-muted"><?= $chamadoDados[1] ?></h6>
+                  <p class="card-text"><?= $chamadoDados[2] ?></p>
                 </div>
               </div>
 
-              <div class="card mb-3 bg-light">
-                <div class="card-body">
-                  <h5 class="card-title">Título do chamado...</h5>
-                  <h6 class="card-subtitle mb-2 text-muted">Categoria</h6>
-                  <p class="card-text">Descrição do chamado...</p>
-
-                </div>
-              </div>
-
+              <? } ?>
+                
               <div class="row mt-5">
                 <div class="col-6">
                   <a class="btn btn-lg btn-warning btn-block" href="home.php">Voltar</a>
                 </div>
               </div>
             </div>
+
           </div>
         </div>
       </div>
