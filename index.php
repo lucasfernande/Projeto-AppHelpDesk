@@ -41,14 +41,20 @@
                 <div class="form-group">
                   <input name="senha" type="password" class="form-control" placeholder="Senha">
                 </div>
+                <button class="btn btn-lg btn-info btn-block" type="submit">Entrar</button>
 
                 <? if(isset($_GET['login']) and $_GET['login'] == 'error') { ?>
-                      <div class="d-flex text-danger justify-content-center">
-                          Usuário ou senha inválidos
+                      <div class="d-flex text-danger justify-content-center mt-2">
+                          Usuário ou senha inválidos!
                       </div>
                 <? } ?>
 
-                <button class="btn btn-lg btn-info btn-block" type="submit">Entrar</button>
+                <? if(isset($_GET['login']) and $_GET['login'] == 'error2') { ?>
+                      <div class="d-flex text-danger justify-content-center mt-2">
+                          Faça login antes de acessar os serviços!
+                      </div>
+                <? } ?>
+
               </form>
 
             </div>
