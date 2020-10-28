@@ -9,7 +9,20 @@
 
     while (!feof($arquivo)) { # a função feof() retorna true apenas quando encontra o fim do arquivo, por isso o operador de negação (!)
       $registro = fgets($arquivo);
-      $chamados[] = $registro;
+      
+      $registroDetalhes = explode('#', $registro);
+
+      if ($_SESSION['perfilId'] == 2) {
+          if ($_SESSION['id'] != $registroDetalhes[0]) { # caso o id da sessão seja diferente do id do autor do chamado, ele não será exibido
+            continue; 
+          }
+          else {
+             $chamados[] = $registro;
+          }
+      }
+      else {
+           $chamados[] = $registro;
+      }
     }
 
     fclose($arquivo);
@@ -61,12 +74,6 @@
 
               <?php
                   $chamadoDados = explode('#', $chamado);
-
-                  if ($_SESSION['perfilId'] == 2) { # exibir somente chamados feitos pelo próprio usuário
-                    if($_SESSION['id'] != $chamadoDados[0]) { # caso o id da sessão seja diferente do id do usuário que fez o chamado, o chamado não será exibido
-                      continue;
-                    }
-                  }
 
                   if (count($chamadoDados) <= 3) { # < 3 pois é a quantidade de campos preenchidos (título, categoria e descrição) evitando mostrar chamados vazios
                     continue;
