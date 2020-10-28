@@ -5,7 +5,7 @@
     # array dos chamados
     $chamados = array();
 
-    $arquivo = fopen('chamados.txt', 'r'); # r = somente leitura
+    $arquivo = fopen('../../../AppHelpDesk/chamados.txt', 'r'); # r = somente leitura
 
     while (!feof($arquivo)) { # a função feof() retorna true apenas quando encontra o fim do arquivo, por isso o operador de negação (!)
       $registro = fgets($arquivo);

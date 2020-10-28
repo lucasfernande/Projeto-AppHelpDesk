@@ -8,7 +8,7 @@
 	}
 
 	# o parâmetro 'a' quer dizer que vamos abrir um arquivo apenas para escrita
-	$arquivo = fopen('chamados.txt', 'a+'); 
+	$arquivo = fopen('../../../AppHelpDesk/chamados.txt', 'a+'); 
 
 	# juntando o conteúdo dos campos em uma string separados por uma cerquilha
 	$texto = $_SESSION['id'] . '#' . implode('#', $_POST) . PHP_EOL; # o PHP_EOL quebra uma linha, evitando que todos os chamados fiquem numa linha só 
