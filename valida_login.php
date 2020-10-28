@@ -5,22 +5,31 @@
 
 	# array de teste
 	$users = array(
-		array('email' => 'adm@teste.com.br', 'senha' => '123456'),
-		array('email' => 'user@teste.com.br', 'senha' => '123456')
+		array('id' => 1, 'email' => 'adm@teste.com.br', 'senha' => '1234', 'perfilId' => 1),
+		array('id' => 2,'email' => 'user@teste.com.br', 'senha' => '1234', 'perfilId' => 1),
+		array('id' => 3,'email' => 'jose@teste.com.br', 'senha' => '1234', 'perfilId' => 2),
+		array('id' => 4,'email' => 'maria@teste.com.br', 'senha' => '1234', 'perfilId' => 2)
 	);
 
 	$usuarioAutenticado = false; # variável que checa se o usuário foi autenticado
+	$usuarioId = null;
+	$perfis = array(1 => 'Admin', 2 => 'User');
+	$usuarioPerfilId = null;
 
 	foreach ($users as $user) {
 
 		if ($user['email'] == $_POST['email'] and $user['senha'] == $_POST['senha']) {
 			$usuarioAutenticado = true;	
+			$usuarioId = $user['id'];
+			$usuarioPerfilId = $user['perfilId'];
 		}
 			
 	}
 
 	if ($usuarioAutenticado) {
 		$_SESSION['autenticado'] = 'sim';
+		$_SESSION['id'] = $usuarioId;
+		$_SESSION['perfilId'] = $usuarioPerfilId;
 		header('Location: home.php');
 	}
 	else {

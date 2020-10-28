@@ -1,3 +1,4 @@
-Notebook não dá tela#Hardware#Notebook liga mas tela não funciona
-Erro de Impressão#Impressora#Impressora não funciona
-Celular não pega 4G#Rede#O 4G não funciona mesmo colocando créditos
+
+3#Notebook não liga#Hardware#bla bla
+3#Erro de Impressão#Impressora#impressora bla bla
+4#Celular não pega 4G#Rede#4G não pega mesmo colocando crédito

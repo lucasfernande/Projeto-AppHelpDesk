@@ -62,15 +62,22 @@
               <?php
                   $chamadoDados = explode('#', $chamado);
 
-                  if (count($chamadoDados) < 3) { # < 3 pois é a quantidade de campos preenchidos (título, categoria e descrição) evitando mostrar chamados vazios
+                  if ($_SESSION['perfilId'] == 2) { # exibir somente chamados feitos pelo próprio usuário
+                    if($_SESSION['id'] != $chamadoDados[0]) { # caso o id da sessão seja diferente do id do usuário que fez o chamado, o chamado não será exibido
+                      continue;
+                    }
+                  }
+
+                  if (count($chamadoDados) <= 3) { # < 3 pois é a quantidade de campos preenchidos (título, categoria e descrição) evitando mostrar chamados vazios
                     continue;
                   }
-              ?>  
+              ?>
+                
               <div class="card mb-3 bg-light">
                 <div class="card-body">
-                  <h5 class="card-title"><?= $chamadoDados[0] ?></h5>
-                  <h6 class="card-subtitle mb-2 text-muted"><?= $chamadoDados[1] ?></h6>
-                  <p class="card-text"><?= $chamadoDados[2] ?></p>
+                  <h5 class="card-title"><?= $chamadoDados[1] ?></h5>
+                  <h6 class="card-subtitle mb-2 text-muted"><?= $chamadoDados[2] ?></h6>
+                  <p class="card-text"><?= $chamadoDados[3] ?></p>
                 </div>
               </div>
 
